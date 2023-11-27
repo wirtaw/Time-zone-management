@@ -1,0 +1,50 @@
+<div class="card is-shady">
+  <div class="card-image">
+    <div class="media">
+      <div class="media-center">
+        <img src="https://res.cloudinary.com/ameo/image/upload/v1639144778/typocat_svbspx.png" class="author-image"
+          alt="Placeholder image">
+      </div>
+      <div class="media-content has-text-centered">
+        <p class="title article-title">Date Time Luxon</p>
+        <p class="subtitle is-6 article-subtitle">
+         
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="content">
+      <h3 class="has-text-centered">Server time</h3>
+      <p>
+        iso "<%= info.dt.toISO() %>" <br>
+        offset "<%= info.dt.offset %>" <br>
+        timestamp "<%= info.dt.toMillis() %>" <br>
+        zone "<%= info.dt.zoneName %>" <br>
+      </p>
+      <p>
+        
+      </p>
+      <h3 class="has-text-centered">Client time</h3>
+      <p id="clientTimes">
+        iso "<span class="iso"></span>" <br>
+        offset "<span class="offset"></span>" <br>
+        timestamp "<span class="timestamp"></span>" <br>
+        zone "<span class="zone"></span>" <br>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="card is-shady">
+  <div class="card-content">
+    <div class="content">
+      <h3 class="has-text-centered">Products</h3>
+      <% info.products.forEach(function(product){ %>
+        <h4 class="has-text-centered"><%= product.title %></h4>
+        <p>
+          availalbleAt "<span class="availalbleAt"><script>document.write(luxon.DateTime.fromMillis(<%= product.availalbleAt %>).toISO());</script></span>" <br>
+        </p>
+      <% }); %>
+    </div>
+  </div>
+</div>
