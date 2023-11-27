@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require('node:path');
+const path = require('path');
 
 const fastify = require('fastify')({ logger: true });
 const helmet = require('@fastify/helmet');
