@@ -88,7 +88,7 @@ const start = async () => {
   try {
     getInfo();
 
-    await fastify.listen({ port: 3000 });
+    await fastify.listen({ port: 3001 });
     fastify.log.info(`server listening on ${fastify.server.address().port}`);
   } catch (exc) {
     Settings.defaultZone = 'system';
