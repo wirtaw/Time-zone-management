@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const crypto = require('crypto');
 
 const createError = require('http-errors');
 const express = require('express');
@@ -8,10 +9,34 @@ const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const helmet = require('helmet');
 
 const app = express();
 
 const getInfo = require('./utils/index');
+const port = 3001;
+
+app.use(helmet());
+
+// Define trusted and localhost script sources
+const trustedScripts = ['cdn.jsdelivr.net'];
+const localhostScripts = ['localhost', '127.0.0.1'];
+
+// Define trusted and localhost image sources
+const trustedImages = ['res.cloudinary.com'];
+const localhostImages = ['localhost', '127.0.0.1'];
+
+// Combine trusted and localhost scripts for scriptSrc directive
+const scriptSources = trustedScripts.concat(localhostScripts.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${port}` : '')));
+const imageSources = trustedImages.concat(localhostImages.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${port}` : '')));
+
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: scriptSources,
+    imgSrc: imageSources,
+  }
+}));
 
 if (app.get('env') === 'production') {
   app.use(logger('combined'));
@@ -38,7 +63,7 @@ app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public'), options));
+app.use(express.static(path.join(__dirname, '../public'), options));
 
 app.set('view engine', 'html');
 // Express and Passport Session

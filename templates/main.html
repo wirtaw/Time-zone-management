@@ -15,25 +15,6 @@
     <%- include('./partials/source.html'); -%>
   </section>
   <%- include('./partials/footer.html'); -%>
-  <script>
-    const DateTime = luxon.DateTime;
-    const dt = DateTime.local();
-
-    const clientTime = document.getElementById('clientTimes');
-    if (clientTime) {
-      clientTime.children[0].innerHTML = dt.toISO();
-      clientTime.children[2].innerHTML = dt.offset;
-      clientTime.children[4].innerHTML = dt.toMillis();
-      clientTime.children[6].innerHTML = dt.zoneName;
-    }
-
-    function toISO(timestamp) {
-      if (!timestamp) {
-        return '';
-      }
-
-      return DateTime.fromMillis(timestamp).toISO();
-    }
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>

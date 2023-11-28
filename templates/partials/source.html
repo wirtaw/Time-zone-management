@@ -8,7 +8,7 @@
       <div class="media-content has-text-centered">
         <p class="title article-title">Date Time Luxon</p>
         <p class="subtitle is-6 article-subtitle">
-         
+
         </p>
       </div>
     </div>
@@ -23,7 +23,7 @@
         zone "<%= info.dt.zoneName %>" <br>
       </p>
       <p>
-        
+
       </p>
       <h3 class="has-text-centered">Client time</h3>
       <p id="clientTimes">
@@ -42,7 +42,7 @@
       <% info.products.forEach(function(product){ %>
         <h4 class="has-text-centered"><%= product.title %></h4>
         <p>
-          availalbleAt "<span class="availalbleAt"><script>document.write(luxon.DateTime.fromMillis(<%= product.availalbleAt %>).toISO());</script></span>" <br>
+          availalbleAt "<span class="availalbleAt" attr-availalbleat='<%= product.availalbleAt %>'></span>" <br>
         </p>
       <% }); %>
     </div>
