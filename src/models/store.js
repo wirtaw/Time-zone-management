@@ -26,7 +26,7 @@ class Store {
   }
 
   loadProducts(len = 10) {
-    this.products = Array.from({ length: len }, (v, i) => ({
+    this.products = Array.from({ length: len }, () => ({
       id: faker.string.uuid(),
       title: faker.word.words({ count: 5, min: 1, max: 5 }),
       availalbleAt: DateTime.fromJSDate(faker.date.future()).setZone(this.timezone).toMillis(),

@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const crypto = require('crypto');
 
 const createError = require('http-errors');
 const express = require('express');
