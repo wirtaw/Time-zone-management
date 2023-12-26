@@ -9,11 +9,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const helmet = require('helmet');
+const { parsed: { PORT, SESSION_SECRET }} = require('dotenv').config();
 
 const app = express();
 
 const getInfo = require('./utils/index');
-const port = 3001;
 
 app.use(helmet());
 
@@ -26,8 +26,8 @@ const trustedImages = ['res.cloudinary.com'];
 const localhostImages = ['localhost', '127.0.0.1'];
 
 // Combine trusted and localhost scripts for scriptSrc directive
-const scriptSources = trustedScripts.concat(localhostScripts.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${port}` : '')));
-const imageSources = trustedImages.concat(localhostImages.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${port}` : '')));
+const scriptSources = trustedScripts.concat(localhostScripts.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${PORT}` : '')));
+const imageSources = trustedImages.concat(localhostImages.map(origin => `'self'` + (origin === 'localhost' ? ` ${origin}:${PORT}` : '')));
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
@@ -69,7 +69,7 @@ app.set('view engine', 'html');
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'foobar',
+    secret: SESSION_SECRET || 'foobar',
     resave: false,
     saveUninitialized: false
   })

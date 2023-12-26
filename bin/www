@@ -8,6 +8,7 @@ const {Settings, DateTime} = require('luxon');
 const app = require('../src/app');
 const debug = require('debug')('franchise-hockey:server');
 const http = require('http');
+const { parsed: { PORT }} = require('dotenv').config();
 
 Settings.defaultZone = 'utc';
 
@@ -15,7 +16,7 @@ Settings.defaultZone = 'utc';
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3001');
+const port = normalizePort(PORT || '3001');
 app.set('port', port);
 
 /**
