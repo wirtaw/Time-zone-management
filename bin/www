@@ -6,7 +6,7 @@
 const {Settings, DateTime} = require('luxon');
 
 const app = require('../src/app');
-const debug = require('debug')('franchise-hockey:server');
+const debug = require('debug')('time-management:server');
 const http = require('http');
 const { parsed: { PORT }} = require('dotenv').config();
 
