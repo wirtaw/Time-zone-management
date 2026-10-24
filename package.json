@@ -9,6 +9,9 @@
     "lint:fix": "npx eslint --fix",
     "start": "node -r dotenv/config ./bin/www"
   },
+  "engines": {
+    "node": ">=24.0.0 <26.0.0"
+  },
   "keywords": [
     "luxon",
     "date-time",
