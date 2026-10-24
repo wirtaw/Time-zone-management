@@ -4,9 +4,10 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node -r dotenv/config ./bin/www",
+    "check:updates": "ncu -i --format=group",
     "lint": "npx eslint",
-    "lint:fix": "npx eslint --fix"
+    "lint:fix": "npx eslint --fix",
+    "start": "node -r dotenv/config ./bin/www"
   },
   "keywords": [
     "luxon",
@@ -17,20 +18,21 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.7",
-    "debug": "^4.3.4",
+    "debug": "^4.4.3",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-hbs": "^2.5.0",
-    "express-session": "^1.18.1",
+    "express-session": "^1.19.0",
     "helmet": "^7.1.0",
-    "http-errors": "^2.0.0",
-    "luxon": "^3.4.4",
-    "morgan": "^1.10.1",
-    "serve-favicon": "^2.5.0"
+    "http-errors": "^2.0.1",
+    "luxon": "^3.7.2",
+    "morgan": "^1.12.1",
+    "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.3.1",
-    "eslint": "^8.56.0"
+    "@faker-js/faker": "^10.6.0",
+    "eslint": "^8.56.0",
+    "npm-check-updates": "^23.1.1"
   }
 }
